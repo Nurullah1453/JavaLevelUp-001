@@ -1,12 +1,21 @@
 package org.example;
 
+import java.lang.ref.SoftReference;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(shouldWakeUp(true,1));
-        System.out.println(hasTeen(9,99,19));
-        System.out.println(isCatPlaying(false,35));
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Alan Uzunluğunu Giriniz");
+        double alan = scan.nextDouble();
+        System.out.println("Kenar Uzunluğunu Giriniz");
+        double kenar = scan.nextDouble();
+        System.out.println("Area of rectangle: " + area(alan,kenar));
 
+        System.out.println("Enter radius of circle: ");
+        double radius = scan.nextDouble();
+        System.out.println("Area of circle: " + area(radius));
     }
 
     public static boolean shouldWakeUp (boolean isBarking,int clock){
@@ -28,6 +37,23 @@ public class Main {
 
         return temp < highestTemp && temp > lowestTemp;
 
+    }
+
+    public static double area(double alan , double kenar){
+
+        if (alan <= 0 || kenar <= 0){
+            System.out.println("Alan ve kenar uzunlukları 0'dan küçük olamaz");
+            return -1 ;
+        }
+        return alan * kenar;
+
+    }
+    public static double area(double radius){
+        if (radius<0){
+            System.out.println("Radius cannot be less than zero!!! Radius: " + radius);
+            return -1;
+        }
+        return Math.PI*Math.pow(radius,2);
     }
 
 }
